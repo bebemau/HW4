@@ -23,18 +23,6 @@
 
 - (void)controlTextDidChange:(NSNotification *)notification {
     
-//    BOOL itemExists = [self.viewControllerList hasItemWithTitle:self.txtTodoItem.stringValue];
-//    //NSLog(itemExists ? @"Yes" : @"No");
-//    self.btnRemove.enabled = itemExists;
-//    
-//    if([self.txtTodoItem.stringValue  isEqual: @""])
-//    {
-//        self.btnAdd.enabled = false;
-//    }
-//    else{
-//        self.btnAdd.enabled = true;
-//    }
-    
     TodoItem *item = [TodoItem new];
     item.name = self.txtTodoItem.stringValue;
     [self.viewControllerList saveItem: item selectedRowIndex: self.rowIndex];
@@ -42,15 +30,15 @@
     
 }
 
-//- (void)tableView:(NSTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    self.rowIndex = indexPath;
-//    NSLog(@"%@", self.rowIndex);
-//}
-
 - (void)tableViewSelectionIsChanging:(NSNotification *)aNotification{
-    //NSLog(@"%ld", (long)self.tblTodoList.selectedRow);
-    self.rowIndex = self.tblTodoList.selectedRow;
-    self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
+    if(self.tblTodoList.selectedRow != -1) {
+        self.rowIndex = self.tblTodoList.selectedRow;
+        self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
+        self.btnRemove.enabled = YES;
+    }
+    else{
+        self.btnRemove.enabled= NO;
+    }
 }
 
 -(NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)rowIndex
@@ -78,7 +66,8 @@
 }
 
 - (IBAction)btnRemove_Clicked:(id)sender {
-    
+    [self.viewControllerList removeItemAtIndex:self.rowIndex];
+    [self.tblTodoList reloadData];
 }
 
 @end

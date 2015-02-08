@@ -62,22 +62,6 @@
     return self;
 }
 
--(void)removeItem:(TodoItem*)item {
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", item.name];
-    NSArray *filtered = [self._todoList filteredArrayUsingPredicate:predicate];
-    
-    if(filtered.count != 0)
-    {
-        [self._todoList removeObjectAtIndex:0];
-    }
-}
-
-//-(void)canAddItem:(BOOL)value{
-//    self._allowDuplicates = value;
-//}
-
-
 
 -(BOOL)hasItemWithTitle:(NSString*)title{
     // check if any item contained already has same title
@@ -103,6 +87,11 @@
 
 -(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index{
     [self._todoList replaceObjectAtIndex:index withObject:item];
+}
+
+-(void)removeItemAtIndex:(NSInteger)index{
+    
+    [self._todoList removeObjectAtIndex:index];
 }
 
 @end
