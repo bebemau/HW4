@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         // Add your subclass-specific initialization here.
+        self.documentTodoList = [TodoList new];
     }
     return self;
 }
@@ -42,7 +43,7 @@
     
     ViewController *viewController = (ViewController*)windowController.contentViewController;
     
-    viewController.theList  = self.documentTodoList;
+    viewController.viewControllerList  = self.documentTodoList;
     
     
     //[self addWindowController:[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"]];
@@ -52,8 +53,8 @@
 //saving
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     
-    TodoList *list = [[TodoList alloc]initWithTitle:@"myTodolistkey"];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:list];
+    //TodoList *list = [[TodoList alloc]initWithTitle:@"myTodolistkey"];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.documentTodoList];
     return data;
     
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
