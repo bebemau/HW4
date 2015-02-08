@@ -13,12 +13,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //todoList
     self.viewControllerList = [[TodoList alloc ]init];
-    //[self.viewControllerList canAddItem:true];
     self.viewControllerList._allowDuplicates = YES;
+    
+    //txtTodoItem
+    self.txtTodoItem.font = [NSFont fontWithName:@"Courier" size:20.0];
     self.txtTodoItem.delegate = self;
+    
+    //tblTodoList
     self.tblTodoList.delegate = self;
     self.tblTodoList.dataSource = self;
+    self.tblTodoList.rowHeight = 50;
+    [self.tblTodoList setHeaderView:nil];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -68,6 +75,7 @@
 - (IBAction)btnRemove_Clicked:(id)sender {
     [self.viewControllerList removeItemAtIndex:self.rowIndex];
     [self.tblTodoList reloadData];
+    self.txtTodoItem.stringValue = @"";
 }
 
 @end
