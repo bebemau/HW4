@@ -16,7 +16,7 @@
 
 -(void)addItem:(TodoItem*)item;    // insert item if OK
 -(void)removeItem:(TodoItem*)item;    // remove item
--(BOOL)canAddItem:(TodoItem*)item; // check if OK to insert
+-(void)canAddItem:(BOOL)value;
 -(TodoItem*)getItemByIndex: (NSUInteger*)index;
 -(BOOL)hasItemWithTitle:(NSString*)title; // check if any item contained already has same title
 -(NSUInteger)itemCount; // number of items contained in list

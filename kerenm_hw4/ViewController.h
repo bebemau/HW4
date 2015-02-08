@@ -19,7 +19,7 @@ NSTextFieldDelegate
 @property (weak) IBOutlet NSTextField *txtTodoItem;
 @property (weak) IBOutlet NSButton *btnAdd;
 @property (weak) IBOutlet NSButton *btnRemove;
-@property (nonatomic) NSIndexPath *rowIndex;
+@property (nonatomic) NSInteger rowIndex;
 @property (strong) IBOutlet TodoList *viewControllerList;
 //@property TodoList *viewControllerList;
 @end

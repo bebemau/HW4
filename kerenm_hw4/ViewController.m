@@ -14,6 +14,7 @@
     [super viewDidLoad];
 
     self.viewControllerList = [[TodoList alloc ]init];
+    [self.viewControllerList canAddItem:true];
     self.txtTodoItem.delegate = self;
     self.tblTodoList.delegate = self;
     self.tblTodoList.dataSource = self;
@@ -35,17 +36,22 @@
     
 }
 
-- (void)tableView:(NSTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.rowIndex = indexPath;
-    NSLog(@"%@", self.rowIndex);
+//- (void)tableView:(NSTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    self.rowIndex = indexPath;
+//    NSLog(@"%@", self.rowIndex);
+//}
+
+- (void)tableViewSelectionIsChanging:(NSNotification *)aNotification{
+    NSLog(@"%ld", (long)self.tblTodoList.selectedRow);
+    self.rowIndex = self.tblTodoList.selectedRow;
 }
 
 -(NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)rowIndex
 {
     NSTableCellView *cell = [tableView makeViewWithIdentifier:@"tableCellID" owner:nil];
     cell.textField.stringValue=@(rowIndex).stringValue;
-    NSLog(@"rowindex %ld", (long)rowIndex);
-    NSLog(@"rowindex %ld", (NSUInteger)rowIndex);
+//    NSLog(@"rowindex %ld", (long)rowIndex);
+//    NSLog(@"rowindex %ld", (NSUInteger)rowIndex);
     cell.textField.stringValue =[self.viewControllerList getItemByIndex:(NSUInteger*)rowIndex].name;
     return cell;
 }
@@ -59,6 +65,8 @@
     TodoItem *item = [TodoItem new];
     item.name  = @"New Item";
     [self.viewControllerList addItem:item];
+    NSLog(@"%lu", (unsigned long)[self.viewControllerList itemCount]);
+    [self.tblTodoList reloadData];
 }
 
 - (IBAction)btnRemove_Clicked:(id)sender {

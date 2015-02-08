@@ -71,19 +71,10 @@
     {
         [self._todoList removeObjectAtIndex:0];
     }
-    
-//    for(TodoItem* i in filtered)
-//    {
-//        [self._todoList removeObject:i];
-//    }
 }
 
--(BOOL)canAddItem:(TodoItem*)item{
-   // check if OK to insert
-    if(self._allowDuplicates)
-        return true;
-    else
-        return false;
+-(void)canAddItem:(BOOL)value{
+    self._allowDuplicates = value;
 }
 
 
