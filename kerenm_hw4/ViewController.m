@@ -44,6 +44,7 @@
 - (void)tableViewSelectionIsChanging:(NSNotification *)aNotification{
     NSLog(@"%ld", (long)self.tblTodoList.selectedRow);
     self.rowIndex = self.tblTodoList.selectedRow;
+    self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
 }
 
 -(NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)rowIndex
@@ -52,7 +53,7 @@
     cell.textField.stringValue=@(rowIndex).stringValue;
 //    NSLog(@"rowindex %ld", (long)rowIndex);
 //    NSLog(@"rowindex %ld", (NSUInteger)rowIndex);
-    cell.textField.stringValue =[self.viewControllerList getItemByIndex:(NSUInteger*)rowIndex].name;
+    cell.textField.stringValue =[self.viewControllerList getItemByIndex:(NSUInteger)rowIndex].name;
     return cell;
 }
 
