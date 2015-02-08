@@ -15,6 +15,8 @@
 		25544A331A86FA4500CBEE29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25544A321A86FA4500CBEE29 /* Images.xcassets */; };
 		25544A361A86FA4500CBEE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25544A341A86FA4500CBEE29 /* Main.storyboard */; };
 		25544A421A86FA4500CBEE29 /* kerenm_hw4Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544A411A86FA4500CBEE29 /* kerenm_hw4Tests.m */; };
+		25544A4F1A86FA6F00CBEE29 /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544A4C1A86FA6F00CBEE29 /* TodoItem.m */; };
+		25544A501A86FA6F00CBEE29 /* TodoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 25544A4E1A86FA6F00CBEE29 /* TodoList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,10 @@
 		25544A3B1A86FA4500CBEE29 /* kerenm_hw4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kerenm_hw4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25544A401A86FA4500CBEE29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25544A411A86FA4500CBEE29 /* kerenm_hw4Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kerenm_hw4Tests.m; sourceTree = "<group>"; };
+		25544A4B1A86FA6F00CBEE29 /* TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoItem.h; sourceTree = "<group>"; };
+		25544A4C1A86FA6F00CBEE29 /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoItem.m; sourceTree = "<group>"; };
+		25544A4D1A86FA6F00CBEE29 /* TodoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoList.h; sourceTree = "<group>"; };
+		25544A4E1A86FA6F00CBEE29 /* TodoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,10 @@
 				25544A251A86FA4500CBEE29 /* AppDelegate.m */,
 				25544A291A86FA4500CBEE29 /* ViewController.h */,
 				25544A2A1A86FA4500CBEE29 /* ViewController.m */,
+				25544A4B1A86FA6F00CBEE29 /* TodoItem.h */,
+				25544A4C1A86FA6F00CBEE29 /* TodoItem.m */,
+				25544A4D1A86FA6F00CBEE29 /* TodoList.h */,
+				25544A4E1A86FA6F00CBEE29 /* TodoList.m */,
 				25544A2C1A86FA4500CBEE29 /* Document.h */,
 				25544A2D1A86FA4500CBEE29 /* Document.m */,
 				25544A321A86FA4500CBEE29 /* Images.xcassets */,
@@ -227,6 +237,8 @@
 				25544A2B1A86FA4500CBEE29 /* ViewController.m in Sources */,
 				25544A281A86FA4500CBEE29 /* main.m in Sources */,
 				25544A311A86FA4500CBEE29 /* Document.xcdatamodeld in Sources */,
+				25544A501A86FA6F00CBEE29 /* TodoList.m in Sources */,
+				25544A4F1A86FA6F00CBEE29 /* TodoItem.m in Sources */,
 				25544A261A86FA4500CBEE29 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
