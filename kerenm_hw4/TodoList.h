@@ -16,10 +16,10 @@
 
 -(void)addItem:(TodoItem*)item;    // insert item if OK
 -(void)removeItem:(TodoItem*)item;    // remove item
--(void)canAddItem:(BOOL)value;
+//-(void)canAddItem:(BOOL)value;
 -(TodoItem*)getItemByIndex: (NSUInteger)index;
 -(BOOL)hasItemWithTitle:(NSString*)title; // check if any item contained already has same title
 -(NSUInteger)itemCount; // number of items contained in list
--(instancetype)initWithTitle:(NSString*)title;
-
+//-(instancetype)initWithTitle:(NSString*)title;
+-(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index;
 @end

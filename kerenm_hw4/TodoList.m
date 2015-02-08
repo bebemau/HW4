@@ -73,9 +73,9 @@
     }
 }
 
--(void)canAddItem:(BOOL)value{
-    self._allowDuplicates = value;
-}
+//-(void)canAddItem:(BOOL)value{
+//    self._allowDuplicates = value;
+//}
 
 
 
@@ -93,12 +93,16 @@
 
 
 -(NSUInteger)itemCount{
+    NSLog(@"item count at itemCount: %ld", self._todoList.count);
     return self._todoList.count;
 }
 
--(TodoItem*)getItemByIndex: (NSUInteger*)rowIndex{
-    NSLog(@"rowindex %ld", (NSUInteger)rowIndex);
+-(TodoItem*)getItemByIndex: (NSUInteger)rowIndex{
     return [self._todoList objectAtIndex:(NSUInteger)rowIndex];
+}
+
+-(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index{
+    [self._todoList replaceObjectAtIndex:index withObject:item];
 }
 
 @end
