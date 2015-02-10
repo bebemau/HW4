@@ -83,7 +83,13 @@
 }
 
 - (IBAction)btnRemove_Clicked:(id)sender {
-    [self.viewControllerList removeItemAtIndex:self.rowIndex];
+    NSIndexSet *indexSet = self.tblTodoList.selectedRowIndexes;
+    
+    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [self.viewControllerList removeItemAtIndex:idx];
+    }];
+    
+    //[self.viewControllerList removeItemAtIndex:self.rowIndex];
     [self.tblTodoList reloadData];
     self.txtTodoItem.stringValue = @"";
 }
