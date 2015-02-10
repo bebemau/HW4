@@ -28,6 +28,7 @@
     self.tblTodoList.dataSource = self;
     self.tblTodoList.rowHeight = 50;
     [self.tblTodoList setHeaderView:nil];
+    [self.tblTodoList setAllowsMultipleSelection:YES];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -40,10 +41,17 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
-    if(self.tblTodoList.selectedRow != -1) {
-        self.rowIndex = self.tblTodoList.selectedRow;
-        self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
+    NSIndexSet *indexSet = self.tblTodoList.selectedRowIndexes;
+    if(indexSet.count >= 1){
         self.btnRemove.enabled = YES;
+        
+        if(indexSet.count >1){
+            self.txtTodoItem.stringValue = @"";
+        }
+        else{
+            self.rowIndex = self.tblTodoList.selectedRow;
+            self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
+        }
     }
     else{
         self.btnRemove.enabled= NO;
