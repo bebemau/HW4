@@ -45,6 +45,7 @@
     
     viewController.viewControllerList  = self.documentTodoList;
     
+    [viewController.tblTodoList reloadData];
     
     //[self addWindowController:[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"]];
 }
@@ -69,7 +70,6 @@
     if([object isKindOfClass: [TodoList class]]){
         self.documentTodoList = object;
         return YES;
-        
     }
     
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.

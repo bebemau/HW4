@@ -10,7 +10,7 @@
 
 @implementation TodoItem
 
-static NSString *const kName = @"name";
+static NSString *const keyName = @"name";
 
 +(instancetype)TodoItemName:(NSString*)name
 {
@@ -21,14 +21,14 @@ static NSString *const kName = @"name";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.name forKey:kName];
+    [aCoder encodeObject:self.name forKey:keyName];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if(self)
     {
-        self.name  = [aDecoder decodeObjectForKey:kName];
+        self.name  = [aDecoder decodeObjectForKey:keyName];
     }
     return self;
 }

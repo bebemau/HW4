@@ -10,6 +10,8 @@
 
 @implementation TodoList
 
+static NSString *keyTodoList = @"TodoListKey";
+
 +(instancetype)initWithTitle:(NSString*)title
 {
     TodoList *object = [[self alloc] init];
@@ -50,14 +52,14 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.todoListArray forKey:@"mytodoListKey"];
+    [aCoder encodeObject:self.todoListArray forKey:keyTodoList];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if(self)
     {
-        self.todoListArray  = [aDecoder decodeObjectForKey:@"mytodoListKey"];
+        self.todoListArray  = [aDecoder decodeObjectForKey:keyTodoList];
     }
     return self;
 }
