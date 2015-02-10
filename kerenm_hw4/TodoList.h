@@ -10,8 +10,8 @@
 #import "TodoItem.h"
 
 @interface TodoList : NSObject <NSCoding>
-@property (nonatomic, readwrite) BOOL _allowDuplicates;
-@property (nonatomic, readwrite) NSMutableArray *_todoList;
+@property (nonatomic, readwrite) BOOL todoListAllowDuplicates;
+@property (nonatomic, readwrite) NSMutableArray *todoListArray;
 @property (nonatomic, readwrite) NSString *todoListTitle;
 
 -(void)addItem:(TodoItem*)item;    // insert item if OK

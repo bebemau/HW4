@@ -12,10 +12,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Keren's TodoList";
 
     //todoList
     self.viewControllerList = [[TodoList alloc ]init];
-    self.viewControllerList._allowDuplicates = YES;
+    self.viewControllerList.todoListAllowDuplicates = YES;
     
     //txtTodoItem
     self.txtTodoItem.font = [NSFont fontWithName:@"Courier" size:20.0];
@@ -65,7 +67,7 @@
 
 - (IBAction)btnAdd_Click:(id)sender {
     //tried putting this in viewDidLoad but didnt work
-    self.viewControllerList._allowDuplicates = YES;
+    self.viewControllerList.todoListAllowDuplicates = YES;
     TodoItem *item = [TodoItem new];
     item.name  = @"New Item";
     [self.viewControllerList addItem:item];
