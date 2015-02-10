@@ -39,7 +39,7 @@
     
 }
 
-- (void)tableViewSelectionIsChanging:(NSNotification *)aNotification{
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
     if(self.tblTodoList.selectedRow != -1) {
         self.rowIndex = self.tblTodoList.selectedRow;
         self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
