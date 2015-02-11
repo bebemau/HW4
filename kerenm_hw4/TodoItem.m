@@ -11,17 +11,20 @@
 @implementation TodoItem
 
 static NSString *const keyName = @"name";
+static NSString *const keyDetail = @"detail";
 
-+(instancetype)TodoItemName:(NSString*)name
-{
-    //no need super init since init takes care of it
-    TodoItem *object = [[self alloc] init];
-    object.name = name;
-    return object;
-}
+//(instancetype)initWithNameDetail:(NSString*)name ItemDetail: (NSString*)detail
+//{
+//    //no need super init since init takes care of it
+//    TodoItem *object = [[self alloc] init];
+//    object.name = name;
+//    object.detail  = detail;
+//    return object;
+//}
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.name forKey:keyName];
+    [aCoder encodeObject:self.itemDetail forKey:keyDetail];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -29,6 +32,7 @@ static NSString *const keyName = @"name";
     if(self)
     {
         self.name  = [aDecoder decodeObjectForKey:keyName];
+        self.itemDetail  = [aDecoder decodeObjectForKey:keyDetail];
     }
     return self;
 }

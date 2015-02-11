@@ -12,15 +12,15 @@
 @interface ViewController : NSViewController <
 NSTableViewDataSource,
 NSTableViewDelegate,
-NSTextFieldDelegate
+NSTextFieldDelegate,
+NSTextViewDelegate
 >
-
+@property (weak) IBOutlet NSTextField *txtTodoItemDetail;
 @property (weak) IBOutlet NSTableView *tblTodoList;
 @property (weak) IBOutlet NSTextField *txtTodoItem;
 @property (weak) IBOutlet NSButton *btnAdd;
 @property (weak) IBOutlet NSButton *btnRemove;
 @property (nonatomic) NSInteger rowIndex;
 @property (strong) IBOutlet TodoList *viewControllerList;
-//@property TodoList *viewControllerList;
 @end
 

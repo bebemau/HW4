@@ -79,7 +79,6 @@ static NSString *keyTodoList = @"TodoListKey";
 
 
 -(NSUInteger)itemCount{
-    NSLog(@"item count at itemCount: %ld", self.todoListArray.count);
     return self.todoListArray.count;
 }
 
@@ -92,7 +91,6 @@ static NSString *keyTodoList = @"TodoListKey";
 }
 
 -(void)removeItemAtIndex:(NSInteger)index{
-    
     [self.todoListArray removeObjectAtIndex:index];
 }
 

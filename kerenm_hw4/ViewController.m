@@ -22,6 +22,8 @@
     //txtTodoItem
     self.txtTodoItem.font = [NSFont fontWithName:@"Courier" size:20.0];
     self.txtTodoItem.delegate = self;
+    self.txtTodoItemDetail.font = [NSFont fontWithName:@"Courier" size:20.0];
+    self.txtTodoItemDetail.delegate = self;
     
     //tblTodoList
     self.tblTodoList.delegate = self;
@@ -32,12 +34,21 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-    
+    [self SaveAfterTextChanged];
+}
+
+-(void)textDidChange:(NSNotification *)notification {
+    [self SaveAfterTextChanged];
+}
+
+-(void)SaveAfterTextChanged{
     TodoItem *item = [TodoItem new];
     item.name = self.txtTodoItem.stringValue;
+//    NSString *detailText = [self.txtTodoItemDetail string];
+//    item.itemDetail = detailText;
+    item.itemDetail  = self.txtTodoItemDetail.stringValue;
     [self.viewControllerList saveItem: item selectedRowIndex: self.rowIndex];
     [self.tblTodoList reloadData];
-    
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification{
@@ -47,10 +58,14 @@
         
         if(indexSet.count >1){
             self.txtTodoItem.stringValue = @"";
+            //[self.txtTodoItemDetail setString: @""];
+            self.txtTodoItemDetail.stringValue =@"";
         }
         else{
             self.rowIndex = self.tblTodoList.selectedRow;
             self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
+            //[self.txtTodoItemDetail setString:[self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].itemDetail];
+            self.txtTodoItemDetail.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].itemDetail;
         }
     }
     else{
@@ -62,8 +77,6 @@
 {
     NSTableCellView *cell = [tableView makeViewWithIdentifier:@"tableCellID" owner:nil];
     cell.textField.stringValue=@(rowIndex).stringValue;
-    //NSLog(@"rowindex %ld", (long)rowIndex);
-    NSLog(@"rowindex at viewForTableColumn %ld", (NSUInteger)rowIndex);
     cell.textField.stringValue =[self.viewControllerList getItemByIndex:(NSUInteger)rowIndex].name;
     return cell;
 }
@@ -78,6 +91,7 @@
     self.viewControllerList.todoListAllowDuplicates = YES;
     TodoItem *item = [TodoItem new];
     item.name  = @"New Item";
+    item.itemDetail =@"";
     [self.viewControllerList addItem:item];
     [self.tblTodoList reloadData];
 }
@@ -89,9 +103,9 @@
         [self.viewControllerList removeItemAtIndex:idx];
     }];
     
-    //[self.viewControllerList removeItemAtIndex:self.rowIndex];
     [self.tblTodoList reloadData];
     self.txtTodoItem.stringValue = @"";
+    self.txtTodoItemDetail.stringValue = @"";
 }
 
 @end
