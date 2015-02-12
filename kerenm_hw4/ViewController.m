@@ -20,10 +20,17 @@
     self.viewControllerList.todoListAllowDuplicates = YES;
     
     //txtTodoItem
+    [self.txtTodoItem setFocusRingType:NSFocusRingTypeNone];
     self.txtTodoItem.font = [NSFont fontWithName:@"Courier" size:20.0];
     self.txtTodoItem.delegate = self;
+    [self.txtTodoItem setBackgroundColor:[NSColor lightGrayColor]];
+    [self.txtTodoItem setBordered:NO];
+
+    //txtTodoItemDetail
     self.txtTodoItemDetail.font = [NSFont fontWithName:@"Courier" size:20.0];
     self.txtTodoItemDetail.delegate = self;
+    [self.txtTodoItemDetail setFocusRingType:NSFocusRingTypeNone];
+    [self.txtTodoItemDetail setBordered:NO];
     
     //tblTodoList
     self.tblTodoList.delegate = self;
@@ -31,6 +38,9 @@
     self.tblTodoList.rowHeight = 50;
     [self.tblTodoList setHeaderView:nil];
     [self.tblTodoList setAllowsMultipleSelection:YES];
+    
+    //button
+    self.btnRemove.enabled = NO;
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -73,6 +83,7 @@
     }
 }
 
+
 -(NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)rowIndex
 {
     NSTableCellView *cell = [tableView makeViewWithIdentifier:@"tableCellID" owner:nil];
@@ -97,15 +108,33 @@
 }
 
 - (IBAction)btnRemove_Clicked:(id)sender {
+    BOOL didRemove = NO;
     NSIndexSet *indexSet = self.tblTodoList.selectedRowIndexes;
     
-    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [self.viewControllerList removeItemAtIndex:idx];
-    }];
+    //indexSet.count will be zero if focus is on any of the text fields
+    if(indexSet.count == 0){
+        [self.viewControllerList removeItemAtIndex:self.rowIndex];
+        didRemove = YES;
+    }
+    else{
+        NSUInteger idx = [indexSet lastIndex];
+        while (idx != NSNotFound)
+        {
+            NSLog (@"The current index is %lu", (unsigned long)idx);
+            [self.viewControllerList removeItemAtIndex:idx];
+            // get the next index
+            idx = [indexSet indexLessThanIndex:idx];
+        }
+        didRemove = YES;
+    }
     
     [self.tblTodoList reloadData];
     self.txtTodoItem.stringValue = @"";
     self.txtTodoItemDetail.stringValue = @"";
+    if(didRemove)
+    {
+        self.btnRemove.enabled = NO;
+    }
 }
 
 @end

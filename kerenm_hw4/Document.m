@@ -32,7 +32,7 @@
 }
 
 + (BOOL)autosavesInPlace {
-    return NO;
+    return YES;
 }
 
 - (void)makeWindowControllers {
