@@ -71,7 +71,6 @@
         if(indexSet.count >1){
             self.txtTodoItem.stringValue = @"";
             [self.txtTodoItemDetail setString: @""];
-            //self.txtTodoItemDetail.stringValue =@"";
         }
         else{
             self.rowIndex = self.tblTodoList.selectedRow;

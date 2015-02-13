@@ -87,9 +87,7 @@ static NSString *keyTodoList = @"TodoListKey";
 }
 
 -(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index{
-    [self writeAllArrayItems:@"saveItemBeforeSave"];
     [self.todoListArray replaceObjectAtIndex:index withObject:item];
-    [self writeAllArrayItems:@"saveItemAfterSave"];
 }
 
 -(void)removeItemAtIndex:(NSInteger)index{
