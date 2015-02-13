@@ -87,11 +87,24 @@ static NSString *keyTodoList = @"TodoListKey";
 }
 
 -(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index{
+    [self writeAllArrayItems:@"saveItemBeforeSave"];
     [self.todoListArray replaceObjectAtIndex:index withObject:item];
+    [self writeAllArrayItems:@"saveItemAfterSave"];
 }
 
 -(void)removeItemAtIndex:(NSInteger)index{
     [self.todoListArray removeObjectAtIndex:index];
+}
+
+-(void)writeAllArrayItems: (NSString*)whereAmI{
+    for (int i = 0; i < [self.todoListArray count]; i++)
+    {
+        TodoItem* todoItem = [self.todoListArray objectAtIndex:i];
+        NSLog(@"%@", whereAmI);
+        NSLog(@"Index: %d", i);
+        NSLog(@"Name: %@", todoItem.name);
+        NSLog(@"Detail: %@", todoItem.itemDetail);
+    }
 }
 
 @end

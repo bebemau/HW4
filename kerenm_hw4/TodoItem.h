@@ -10,7 +10,7 @@
 
 @interface TodoItem : NSObject <NSCoding>
 
-@property NSString *name;
-@property NSString *itemDetail;
+@property (copy) NSString *name;
+@property (copy) NSString *itemDetail;
 
 @end

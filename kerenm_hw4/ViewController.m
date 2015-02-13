@@ -27,10 +27,10 @@
     [self.txtTodoItem setBordered:NO];
 
     //txtTodoItemDetail
-    self.txtTodoItemDetail.font = [NSFont fontWithName:@"Courier" size:20.0];
     self.txtTodoItemDetail.delegate = self;
+    self.txtTodoItemDetail.font = [NSFont fontWithName:@"Courier" size:20.0];
     [self.txtTodoItemDetail setFocusRingType:NSFocusRingTypeNone];
-    [self.txtTodoItemDetail setBordered:NO];
+    //[self.txtTodoItemDetail setBordered:NO];
     
     //tblTodoList
     self.tblTodoList.delegate = self;
@@ -44,19 +44,21 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
+    NSLog(@"controlTextDidChange called");
     [self SaveAfterTextChanged];
 }
 
 -(void)textDidChange:(NSNotification *)notification {
+    NSLog(@"textDidChange called");
     [self SaveAfterTextChanged];
 }
 
 -(void)SaveAfterTextChanged{
     TodoItem *item = [TodoItem new];
     item.name = self.txtTodoItem.stringValue;
-//    NSString *detailText = [self.txtTodoItemDetail string];
-//    item.itemDetail = detailText;
-    item.itemDetail  = self.txtTodoItemDetail.stringValue;
+    NSString *detailText = [self.txtTodoItemDetail string];
+    item.itemDetail = detailText;
+    //[self.viewControllerList writeAllArrayItems:@"SaveAfterTextChanged before saving"];
     [self.viewControllerList saveItem: item selectedRowIndex: self.rowIndex];
     [self.tblTodoList reloadData];
 }
@@ -68,14 +70,13 @@
         
         if(indexSet.count >1){
             self.txtTodoItem.stringValue = @"";
-            //[self.txtTodoItemDetail setString: @""];
-            self.txtTodoItemDetail.stringValue =@"";
+            [self.txtTodoItemDetail setString: @""];
+            //self.txtTodoItemDetail.stringValue =@"";
         }
         else{
             self.rowIndex = self.tblTodoList.selectedRow;
             self.txtTodoItem.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].name;
-            //[self.txtTodoItemDetail setString:[self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].itemDetail];
-            self.txtTodoItemDetail.stringValue = [self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].itemDetail;
+            [self.txtTodoItemDetail setString:[self.viewControllerList getItemByIndex:(NSUInteger)self.rowIndex].itemDetail];
         }
     }
     else{
@@ -130,7 +131,7 @@
     
     [self.tblTodoList reloadData];
     self.txtTodoItem.stringValue = @"";
-    self.txtTodoItemDetail.stringValue = @"";
+    [self.txtTodoItemDetail setString:@""];
     if(didRemove)
     {
         self.btnRemove.enabled = NO;

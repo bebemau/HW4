@@ -15,7 +15,7 @@ NSTableViewDelegate,
 NSTextFieldDelegate,
 NSTextViewDelegate
 >
-@property (weak) IBOutlet NSTextField *txtTodoItemDetail;
+@property (unsafe_unretained) IBOutlet NSTextView *txtTodoItemDetail;
 @property (weak) IBOutlet NSTableView *tblTodoList;
 @property (weak) IBOutlet NSTextField *txtTodoItem;
 @property (weak) IBOutlet NSButton *btnAdd;

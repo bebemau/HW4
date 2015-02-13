@@ -21,4 +21,5 @@
 -(NSUInteger)itemCount; // number of items contained in list
 //-(instancetype)initWithTitle:(NSString*)title;
 -(void)saveItem:(TodoItem*)item  selectedRowIndex: (NSInteger)index;
+-(void)writeAllArrayItems: (NSString*)whereAmI;
 @end
