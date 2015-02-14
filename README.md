@@ -9,6 +9,4 @@ http://stackoverflow.com/questions/20927451/get-indexpath-row-from-tableview-obj
 http://www.wenda.io/questions/4945907/nskeyedunarchiver-unarchiveobjectwithdata-not-working.html
 
 Ask one well-formed question or observation about the app, technologies used, or related topics.
-1.  Delegates: what if you have two of the same controls and you only want one to use the delegates?  How to specify only one of the controls should trigger the delegate?
-2.  When declaring textview this is the property added to the viewController.h file: @property (unsafe_unretained) IBOutlet NSTextView *txtTodoItemDetail;  what does unsafe_unretained mean, can I just change that to weak like other controls?
-3.  when saving textview's string property to a variable, in debug mode the value is always class= NSBigMutableString.  The only way i could get to see the actual value is to do NSLog.  Maybe I did something wrong, is there any way to easily inspect the value in the object inspector window?
+Still trying to understand why we have that issue with textview where saving the todo item description in a textview will update all items in the array vs a text field doesnt have that issue.  I do understand why the fields in TodoItem should be declared using "copy", just the part that why text field has no issue with properties that are not declared as "copy", but textView has.
